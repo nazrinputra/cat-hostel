@@ -1,0 +1,139 @@
+<?php
+include 'layout/guest/header_guest.php';
+
+$error = '';
+
+if (isset($_POST['register-button'])) {
+    // clean data 
+    $user_name_register = stripslashes($_POST['username']);
+    $user_email_register = stripslashes($_POST['email']);
+    $user_password_register = stripslashes($_POST['password']);
+    $user_contact_register = stripslashes($_POST['contact']);
+    $user_gender_register = stripslashes($_POST['gender']);
+    $user_role_register = stripslashes($_POST['role']);
+
+    $user_name_register = mysqli_real_escape_string($conn, $user_name_register);
+    $user_email_register = mysqli_real_escape_string($conn, $user_email_register);
+    $user_password_register = mysqli_real_escape_string($conn, $user_password_register);
+    $user_contact_register = mysqli_real_escape_string($conn, $user_contact_register);
+    $user_gender_register = mysqli_real_escape_string($conn, $user_gender_register);
+    $user_role_register = mysqli_real_escape_string($conn, $user_role_register);
+
+    $sql = "SELECT * FROM user WHERE user_email='{$user_email_register}'";
+    $result = mysqli_query($conn, $sql);
+    $row  = mysqli_fetch_array($result);
+    if (is_array($row)) {
+        $error = "Email already exist!";
+    } else {
+        $sql = "INSERT into `user` (user_name, user_password, user_email, user_contact, user_gender, user_role) VALUES ('{$user_name_register}', '{$user_password_register}', '{$user_email_register}', '{$user_contact_register}', '{$user_gender_register}', '{$user_role_register}')";
+        $sqlQuery = mysqli_query($conn, $sql);
+
+        if (!$sqlQuery) {
+            die("Database connection not established. " . mysqli_error($conn));
+        }
+
+        $error = '';
+
+        echo '<script>alert("Your account has been registered. Please proceed to login page.");window.location.href="index.php";</script>';
+    }
+}
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Register</title>
+    <link href="css/styles.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="bg-primary">
+    <div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+            <main>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header">
+                                    <h3 class="text-center font-weight-light my-4">Welcome to Cat Hostel</h3>
+                                </div>
+                                <div class="card-body">
+                                    <form action="register.php" method="POST">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-floating mb-3">
+                                                    <input class="form-control" id="username" name="username" type="text" placeholder="Username" />
+                                                    <label for="username">Username</label>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-floating mb-3">
+                                                    <input class="form-control" id="password" name="password" type="password" placeholder="Password" />
+                                                    <label for="password">Password</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-floating mb-3">
+                                                    <input class="form-control" id="email" name="email" type="email" placeholder="Email" />
+                                                    <label for="email">Email</label>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-floating mb-3">
+                                                    <input class="form-control" id="contact" name="contact" type="text" placeholder="Contact" />
+                                                    <label for="contact">Contact</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col">
+                                                <select class="form-select form-floating mb-3 py-3" name="gender" aria-label="Select gender">
+                                                    <option selected>Gender</option>
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                </select>
+                                            </div>
+                                            <div class="col">
+                                                <select class="form-select form-floating mb-3 py-3" name="role" aria-label="Select role">
+                                                    <option selected>Role</option>
+                                                    <option value="Customer">Customer</option>
+                                                    <option value="Staff">Staff</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="d-flex align-items-center justify-content-center mt-4 mb-4 mx-2">
+                                            <button class="btn btn-primary btn-lg" type="submit" name="register-button">Register</button>
+                                        </div>
+                                    </form>
+                                    <div class="card-footer text-center py-3">
+                                        <div class="mb-3 text-danger">
+                                            <?php
+                                            echo $error;
+                                            ?>
+                                        </div>
+                                        <div class="small"><a href="login.php">Has an account? Login here</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </main>
+        </div>
+
+        <?php
+        include 'layout/guest/footer_guest.php';
+        ?>
