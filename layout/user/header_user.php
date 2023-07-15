@@ -37,14 +37,27 @@ if (isset($_POST['logout-button'])) {
     </div>
     <!-- Navbar-->
     <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+      <li>
+        <hr class="dropdown-divider" />
+      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fas fa-user fa-fw"></i>
           <?php
-          echo $_SESSION["user_name"];
+          echo ucwords($_SESSION["user_name"]);
           ?>
         </a>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+          <li>
+            <span class="dropdown-item disabled">
+              <?php
+              echo $_SESSION["user_role"];
+              ?>
+            </span>
+          </li>
+          <li>
+            <hr class="dropdown-divider" />
+          </li>
           <li>
             <form action="" method="POST">
               <button type="submit" class="dropdown-item" name="logout-button">Logout</button>
@@ -75,14 +88,21 @@ if (isset($_POST['logout-button'])) {
               <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
               Bookings
             </a>
-            <a class="nav-link" href="/customers.php">
-              <div class="sb-nav-link-icon"><i class="fa-regular fa-address-book"></i></div>
-              Customers
-            </a>
-            <a class="nav-link" href="/staffs.php">
-              <div class="sb-nav-link-icon"><i class="fa-solid fa-user-shield"></i></div>
-              Staffs
-            </a>
+            <div class="sb-sidenav-menu-heading">Administration</div>
+            <?php
+            if ($_SESSION["user_role"] == "Staff") {
+            ?>
+              <a class="nav-link" href="/customers.php">
+                <div class="sb-nav-link-icon"><i class="fa-regular fa-address-book"></i></div>
+                Customers
+              </a>
+              <a class="nav-link" href="/staffs.php">
+                <div class="sb-nav-link-icon"><i class="fa-solid fa-user-shield"></i></div>
+                Staffs
+              </a>
+            <?php
+            }
+            ?>
           </div>
         </div>
       </nav>

@@ -19,6 +19,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         $_SESSION["user_id"] = $row['user_id'];
         $_SESSION["user_name"] = $row['user_name'];
         $_SESSION["user_email"] = $row['user_email'];
+        $_SESSION["user_role"] = $row['user_role'];
         header("Location: index.php");
     } else {
         $error = "Invalid username or password!";

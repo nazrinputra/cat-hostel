@@ -1,7 +1,11 @@
 <?php
 include 'layout/user/header_user.php';
 
-$sql = "SELECT * FROM cat WHERE user_id='{$_SESSION["user_id"]}'";
+if ($_SESSION["user_role"] == "Staff") {
+  $sql = "SELECT * FROM cat";
+} else {
+  $sql = "SELECT * FROM cat WHERE user_id='{$_SESSION["user_id"]}'";
+}
 $result = mysqli_query($conn, $sql);
 
 ?>
@@ -74,7 +78,7 @@ $result = mysqli_query($conn, $sql);
                     <td><?php echo $row["cat_gender"] ?></td>
                     <td><?php echo $row["cat_color"] ?></td>
                     <td><?php echo $row["cat_weight"] ?></td>
-                    <td><?php echo $rowUser["user_name"] ?></td>
+                    <td><?php echo ucwords($rowUser["user_name"]) ?></td>
                     <td>
                       <a href="/cats_edit.php?cat_id=<?php echo $row["cat_id"] ?>">
                         <button type="button" class="btn btn-primary btn-sm">
