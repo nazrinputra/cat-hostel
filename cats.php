@@ -36,30 +36,59 @@ $result = mysqli_query($conn, $sql);
         <!-- Cat table -->
         <div class="card mb-4">
           <div class="card-header">
-            <i class="fas fa-table me-1"></i>
-            Cats Table
+            <div class="d-flex justify-content-between">
+              <span><i class="fas fa-table me-1"></i>
+                Cats Table</span>
+              <a href="/cats_add.php">
+                <button type="button" class="btn btn-primary btn-sm">
+                  <i class="fa-regular fa-square-plus"></i>
+                  Add
+                </button>
+              </a>
+            </div>
           </div>
           <div class="card-body">
             <table id="datatablesSimple">
               <thead>
                 <tr>
                   <th>ID</th>
+                  <th>Name</th>
                   <th>Gender</th>
                   <th>Color</th>
                   <th>Weight</th>
                   <th>Owner</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
                 <?php
                 while ($row = mysqli_fetch_array($result)) {
+                  $user_id = $row['user_id'];
+                  $sqlUser = "SELECT * FROM user WHERE user_id={$user_id}";
+                  $resultUser = mysqli_query($conn, $sqlUser);
+                  $rowUser = mysqli_fetch_array($resultUser);
                 ?>
                   <tr>
                     <td><?php echo $row["cat_id"] ?></td>
                     <td><?php echo $row["cat_name"] ?></td>
+                    <td><?php echo $row["cat_gender"] ?></td>
                     <td><?php echo $row["cat_color"] ?></td>
                     <td><?php echo $row["cat_weight"] ?></td>
-                    <td><?php echo $row["user_id"] ?></td>
+                    <td><?php echo $rowUser["user_name"] ?></td>
+                    <td>
+                      <a href="/cats_edit.php?cat_id=<?php echo $row["cat_id"] ?>">
+                        <button type="button" class="btn btn-primary btn-sm">
+                          <i class="fa-regular fa-pen-to-square"></i>
+                          Edit
+                        </button>
+                      </a>
+                      <a href="/cats_delete.php?cat_id=<?php echo $row["cat_id"] ?>">
+                        <button type="button" class="btn btn-danger btn-sm">
+                          <i class="fa-regular fa-trash-can"></i>
+                          Delete
+                        </button>
+                      </a>
+                    </td>
                   </tr>
                 <?php
                 }
