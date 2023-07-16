@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 16, 2023 at 12:08 AM
+-- Generation Time: Jul 16, 2023 at 01:41 AM
 -- Server version: 8.0.32
 -- PHP Version: 8.2.8
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -20,7 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `cat_hostel`
 --
-DROP DATABASE IF EXISTS `cat_hostel`;
 CREATE DATABASE IF NOT EXISTS `cat_hostel`;
 USE `cat_hostel`;
 -- --------------------------------------------------------
@@ -37,6 +36,21 @@ CREATE TABLE `Booking` (
   `check_in` date NOT NULL,
   `check_out` date NOT NULL
 ) ENGINE = InnoDB;
+--
+-- Dumping data for table `Booking`
+--
+
+INSERT INTO `Booking` (
+    `booking_id`,
+    `room_id`,
+    `cat_id`,
+    `booking_reference`,
+    `check_in`,
+    `check_out`
+  )
+VALUES (4, 3, 2, '0716-LCMM', '2023-07-14', '2023-07-16'),
+  (5, 2, 2, '0716-HUUV', '2023-07-30', '2023-07-31'),
+  (6, 2, 1, '0716-FBXN', '2023-07-16', '2023-07-16');
 -- --------------------------------------------------------
 --
 -- Table structure for table `Cat`
@@ -63,8 +77,8 @@ INSERT INTO `Cat` (
     `cat_color`,
     `cat_weight`
   )
-VALUES (1, 1, 'Meow', 'Male', 'Orange', 3),
-  (2, 2, 'Cat', 'Male', 'White', 3);
+VALUES (1, 1, 'Meow', 'Female', 'Orange', 3),
+  (2, 2, 'Cat', 'Male', 'White', 5);
 -- --------------------------------------------------------
 --
 -- Table structure for table `Room`
@@ -81,7 +95,8 @@ CREATE TABLE `Room` (
 --
 
 INSERT INTO `Room` (`room_id`, `room_name`, `room_description`)
-VALUES (2, 'New Room', 'Test add new room');
+VALUES (2, 'New Room', 'New room description'),
+  (3, 'Big Room', 'Big room description');
 -- --------------------------------------------------------
 --
 -- Table structure for table `User`
@@ -164,19 +179,20 @@ ADD PRIMARY KEY (`user_id`),
 -- AUTO_INCREMENT for table `Booking`
 --
 ALTER TABLE `Booking`
-MODIFY `booking_id` int NOT NULL AUTO_INCREMENT;
+MODIFY `booking_id` int NOT NULL AUTO_INCREMENT,
+  AUTO_INCREMENT = 7;
 --
 -- AUTO_INCREMENT for table `Cat`
 --
 ALTER TABLE `Cat`
 MODIFY `cat_id` int NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 3;
+  AUTO_INCREMENT = 6;
 --
 -- AUTO_INCREMENT for table `Room`
 --
 ALTER TABLE `Room`
 MODIFY `room_id` int NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 3;
+  AUTO_INCREMENT = 6;
 --
 -- AUTO_INCREMENT for table `User`
 --
