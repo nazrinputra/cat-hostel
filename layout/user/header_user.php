@@ -88,10 +88,11 @@ if (isset($_POST['logout-button'])) {
               <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
               Bookings
             </a>
-            <div class="sb-sidenav-menu-heading">Administration</div>
             <?php
             if ($_SESSION["user_role"] == "Staff") {
             ?>
+              <div class="sb-sidenav-menu-heading">Administration</div>
+
               <a class="nav-link" href="/customers.php">
                 <div class="sb-nav-link-icon"><i class="fa-regular fa-address-book"></i></div>
                 Customers
