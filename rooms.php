@@ -1,5 +1,10 @@
 <?php
 include 'layout/user/header_user.php';
+
+$sql = "SELECT * FROM room";
+
+$result = mysqli_query($conn, $sql);
+
 ?>
 
 <div id="layoutSidenav_content">
@@ -9,46 +14,109 @@ include 'layout/user/header_user.php';
       <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item active">Rooms</li>
       </ol>
-      <div class="card mb-4">
-        <div class="card-header">
-          <i class="fas fa-table me-1"></i>
-          DataTable Example
+
+      <?php
+      if (mysqli_num_rows($result) == 0) {
+      ?>
+        <!-- No room -->
+        <div class="row justify-content-center">
+          <div class="col-lg-6">
+            <div class="text-center mt-4">
+              <img class="mb-4 img-error" src="assets/img/error-404-monochrome.svg" />
+              <p class="lead">Looks like there is no rooms registered.</p>
+              <?php
+              if ($_SESSION["user_role"] == "Staff") {
+              ?>
+                <a href="rooms_add.php">
+                  <i class="fa-regular fa-square-plus"></i>
+                  Add a room
+                </a>
+              <?php
+              } ?>
+            </div>
+          </div>
         </div>
-        <div class="card-body">
-          <table id="datatablesSimple">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
-              </tr>
-            </thead>
-            <tfoot>
-              <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
-              </tr>
-            </tfoot>
-            <tbody>
-              <tr>
-                <td>Donna Snider</td>
-                <td>Customer Support</td>
-                <td>New York</td>
-                <td>27</td>
-                <td>2011/01/25</td>
-                <td>$112,000</td>
-              </tr>
-            </tbody>
-          </table>
+      <?php
+      } else {
+      ?>
+        <!-- Room table -->
+        <div class="card mb-4">
+          <div class="card-header">
+            <div class="d-flex justify-content-between">
+              <span><i class="fas fa-table me-1"></i>
+                Rooms Table</span>
+              <?php
+              if ($_SESSION["user_role"] == "Staff") {
+              ?>
+                <a href="/rooms_add.php">
+                  <button type="button" class="btn btn-primary btn-sm">
+                    <i class="fa-regular fa-square-plus"></i>
+                    Add
+                  </button>
+                </a>
+              <?php
+              } ?>
+            </div>
+          </div>
+          <div class="card-body">
+            <table id="datatablesSimple">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php
+                while ($row = mysqli_fetch_array($result)) {
+                ?>
+                  <tr>
+                    <td><?php echo $row["room_id"] ?></td>
+                    <td><?php echo $row["room_name"] ?></td>
+                    <td><?php echo $row["room_description"] ?></td>
+                    <td>
+                      <?php
+                      if ($_SESSION["user_role"] == "Staff") {
+                      ?>
+                        <a href="/rooms_edit.php?room_id=<?php echo $row["room_id"] ?>">
+                          <button type="button" class="btn btn-primary btn-sm">
+                            <i class="fa-regular fa-pen-to-square"></i>
+                            Edit
+                          </button>
+                        </a>
+                        <a href="/rooms_delete.php?room_id=<?php echo $row["room_id"] ?>">
+                          <button type="button" class="btn btn-danger btn-sm">
+                            <i class="fa-regular fa-trash-can"></i>
+                            Delete
+                          </button>
+                        </a>
+                      <?php
+                      } else {
+                      ?>
+                        <a href="/rooms_book.php?room_id=<?php echo $row["room_id"] ?>">
+                          <button type="button" class="btn btn-primary btn-sm">
+                            <i class="fa-regular fa-calendar-check"></i>
+                            Book
+                          </button>
+                        </a>
+                      <?php
+                      }
+                      ?>
+                    </td>
+                  </tr>
+                <?php
+                }
+                ?>
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
+      <?php
+      }
+      ?>
+
     </div>
   </main>
 
