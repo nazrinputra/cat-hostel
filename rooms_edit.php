@@ -50,7 +50,7 @@ if (isset($_POST['update-button'])) {
             <div class="row">
               <div class="col">
                 <div class="form-floating mb-3">
-                  <input class="form-control" id="name" name="name" type="text" placeholder="Name" value="<?php echo $row["room_name"] ?>" />
+                  <input class="form-control" id="name" name="name" type="text" placeholder="Name" required value="<?php echo $row["room_name"] ?>" />
                   <label for="name">Name</label>
                 </div>
               </div>

@@ -57,13 +57,13 @@ if (isset($_POST['update-button'])) {
               <div class="row">
                 <div class="col">
                   <div class="form-floating mb-3">
-                    <input class="form-control" id="name" name="name" type="text" placeholder="Name" value="<?php echo $row["cat_name"] ?>" />
+                    <input class="form-control" id="name" name="name" type="text" placeholder="Name" required value="<?php echo $row["cat_name"] ?>" />
                     <label for="name">Name</label>
                   </div>
                 </div>
                 <div class="col">
                   <div class="form-floating mb-3">
-                    <input class="form-control" id="color" name="color" type="text" placeholder="Color" value="<?php echo $row["cat_color"] ?>" />
+                    <input class="form-control" id="color" name="color" type="text" placeholder="Color" required value="<?php echo $row["cat_color"] ?>" />
                     <label for="color">Color</label>
                   </div>
                 </div>
@@ -72,13 +72,13 @@ if (isset($_POST['update-button'])) {
               <div class="row">
                 <div class="col">
                   <div class="form-floating mb-3">
-                    <input class="form-control" id="weight" name="weight" type="text" placeholder="Weight" value="<?php echo $row["cat_weight"] ?>" />
+                    <input class="form-control" id="weight" name="weight" type="text" placeholder="Weight" required value="<?php echo $row["cat_weight"] ?>" />
                     <label for="weight">Weight</label>
                   </div>
                 </div>
                 <div class="col">
-                  <select class="form-select form-floating mb-3 py-3" name="gender" aria-label="Select gender">
-                    <option selected>Gender</option>
+                  <select class="form-select form-floating mb-3 py-3" name="gender" aria-label="Select gender" required>
+                    <option disabled>Gender</option>
                     <option value="Male" <?php if ($row["cat_gender"] == "Male") echo "selected"; ?>>Male</option>
                     <option value="Female" <?php if ($row["cat_gender"] == "Female") echo "selected"; ?>>Female</option>
                   </select>

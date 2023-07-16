@@ -62,8 +62,8 @@ if (isset($_POST['save-button'])) {
             <div class="row">
               <div class="col">
                 <div class="form-floating mb-3">
-                  <select class="form-select form-floating mb-3 py-3" name="room_id" aria-label="Select Room">
-                    <option selected>Select Room</option>
+                  <select class="form-select form-floating mb-3 py-3" name="room_id" aria-label="Select Room" required>
+                    <option disabled>Select Room</option>
                     <?php
                     while ($rowRoom  = mysqli_fetch_array($resultRoom)) {
                     ?>
@@ -81,8 +81,8 @@ if (isset($_POST['save-button'])) {
             <div class="row">
               <div class="col">
                 <div class="form-floating mb-3">
-                  <select class="form-select form-floating mb-3 py-3" name="cat_id" aria-label="Select Cat">
-                    <option selected>Select Cat</option>
+                  <select class="form-select form-floating mb-3 py-3" name="cat_id" aria-label="Select Cat" required>
+                    <option disabled>Select Cat</option>
                     <?php
                     while ($rowCat  = mysqli_fetch_array($resultCat)) {
                     ?>
@@ -100,13 +100,13 @@ if (isset($_POST['save-button'])) {
             <div class="row">
               <div class="col">
                 <div class="form-floating mb-3">
-                  <input class="form-control" id="check_in" name="check_in" type="date" placeholder="Check In" />
+                  <input class="form-control" id="check_in" name="check_in" type="date" placeholder="Check In" required />
                   <label for="check_in">Check In</label>
                 </div>
               </div>
               <div class="col">
                 <div class="form-floating mb-3">
-                  <input class="form-control" id="check_out" name="check_out" type="date" placeholder="Check Out" />
+                  <input class="form-control" id="check_out" name="check_out" type="date" placeholder="Check Out" required />
                   <label for="check_out">Check Out</label>
                 </div>
               </div>

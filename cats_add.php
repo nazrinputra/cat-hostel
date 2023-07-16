@@ -44,13 +44,13 @@ if (isset($_POST['save-button'])) {
             <div class="row">
               <div class="col">
                 <div class="form-floating mb-3">
-                  <input class="form-control" id="name" name="name" type="text" placeholder="Name" />
+                  <input class="form-control" id="name" name="name" type="text" placeholder="Name" required />
                   <label for="name">Name</label>
                 </div>
               </div>
               <div class="col">
                 <div class="form-floating mb-3">
-                  <input class="form-control" id="color" name="color" type="text" placeholder="Color" />
+                  <input class="form-control" id="color" name="color" type="text" placeholder="Color" required />
                   <label for="color">Color</label>
                 </div>
               </div>
@@ -59,13 +59,13 @@ if (isset($_POST['save-button'])) {
             <div class="row">
               <div class="col">
                 <div class="form-floating mb-3">
-                  <input class="form-control" id="weight" name="weight" type="text" placeholder="Weight" />
+                  <input class="form-control" id="weight" name="weight" type="text" placeholder="Weight" required />
                   <label for="weight">Weight</label>
                 </div>
               </div>
               <div class="col">
-                <select class="form-select form-floating mb-3 py-3" name="gender" aria-label="Select gender">
-                  <option selected>Gender</option>
+                <select class="form-select form-floating mb-3 py-3" name="gender" aria-label="Select gender" required>
+                  <option disabled>Gender</option>
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
                 </select>

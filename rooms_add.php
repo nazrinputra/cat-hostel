@@ -40,7 +40,7 @@ if (isset($_POST['save-button'])) {
             <div class="row">
               <div class="col">
                 <div class="form-floating mb-3">
-                  <input class="form-control" id="name" name="name" type="text" placeholder="Name" />
+                  <input class="form-control" id="name" name="name" type="text" placeholder="Name" required />
                   <label for="name">Name</label>
                 </div>
               </div>
