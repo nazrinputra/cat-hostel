@@ -49,11 +49,11 @@ if (isset($_POST['logout-button'])) {
         </a>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
           <li>
-            <span class="dropdown-item disabled">
+            <a class="dropdown-item fs-6 disabled" href="#">
               <?php
-              echo $_SESSION["user_role"];
+              echo $_SESSION["user_email"];
               ?>
-            </span>
+            </a>
           </li>
           <li>
             <hr class="dropdown-divider" />
