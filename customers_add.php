@@ -37,7 +37,7 @@ if (isset($_POST['save-button'])) {
     <div class="container-fluid px-4">
       <h1 class="mt-4">Customers</h1>
       <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="/customers.php">Customers</a></li>
+        <li class="breadcrumb-item"><a href="/8ag1/customers.php">Customers</a></li>
         <li class="breadcrumb-item active">Add</li>
       </ol>
 

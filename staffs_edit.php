@@ -44,7 +44,7 @@ if (isset($_POST['update-button'])) {
     <div class="container-fluid px-4">
       <h1 class="mt-4">Staffs</h1>
       <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="/staffs.php">Staffs</a></li>
+        <li class="breadcrumb-item"><a href="/8ag1/staffs.php">Staffs</a></li>
         <li class="breadcrumb-item active">Edit</li>
       </ol>
 
