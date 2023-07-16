@@ -25,7 +25,7 @@ if (isset($_POST['register-button'])) {
     if (is_array($row)) {
         $error = "Email already exist!";
     } else {
-        $sql = "INSERT into `user` (user_name, user_password, user_email, user_contact, user_gender, user_role) VALUES ('{$user_name_register}', '{$user_password_register}', '{$user_email_register}', '{$user_contact_register}', '{$user_gender_register}', '{$user_role_register}')";
+        $sql = "INSERT into `user` (user_name, user_password, user_email, user_contact, user_gender, user_role, user_active) VALUES ('{$user_name_register}', '{$user_password_register}', '{$user_email_register}', '{$user_contact_register}', '{$user_gender_register}', '{$user_role_register}', false)";
         $sqlQuery = mysqli_query($conn, $sql);
 
         if (!$sqlQuery) {
