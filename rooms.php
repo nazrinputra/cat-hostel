@@ -48,7 +48,7 @@ $result = mysqli_query($conn, $sql);
               <?php
               if ($_SESSION["user_role"] == "Staff") {
               ?>
-                <a href="/8ag1/rooms_add.php">
+                <a href="/rooms_add.php">
                   <button type="button" class="btn btn-primary btn-sm">
                     <i class="fa-regular fa-square-plus"></i>
                     Add
@@ -80,13 +80,13 @@ $result = mysqli_query($conn, $sql);
                       <?php
                       if ($_SESSION["user_role"] == "Staff") {
                       ?>
-                        <a href="/8ag1/rooms_edit.php?room_id=<?php echo $row["room_id"] ?>">
+                        <a href="/rooms_edit.php?room_id=<?php echo $row["room_id"] ?>">
                           <button type="button" class="btn btn-primary btn-sm">
                             <i class="fa-regular fa-pen-to-square"></i>
                             Edit
                           </button>
                         </a>
-                        <a href="/8ag1/rooms_delete.php?room_id=<?php echo $row["room_id"] ?>">
+                        <a href="/rooms_delete.php?room_id=<?php echo $row["room_id"] ?>">
                           <button type="button" class="btn btn-danger btn-sm">
                             <i class="fa-regular fa-trash-can"></i>
                             Delete
@@ -95,7 +95,7 @@ $result = mysqli_query($conn, $sql);
                       <?php
                       } else {
                       ?>
-                        <a href="/8ag1/bookings_add.php?room_id=<?php echo $row["room_id"] ?>">
+                        <a href="/bookings_add.php?room_id=<?php echo $row["room_id"] ?>">
                           <button type="button" class="btn btn-primary btn-sm">
                             <i class="fa-regular fa-calendar-check"></i>
                             Book

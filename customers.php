@@ -40,7 +40,7 @@ $result = mysqli_query($conn, $sql);
             <div class="d-flex justify-content-between">
               <span><i class="fas fa-table me-1"></i>
                 Customers Table</span>
-              <a href="/8ag1/customers_add.php">
+              <a href="/customers_add.php">
                 <button type="button" class="btn btn-primary btn-sm">
                   <i class="fa-regular fa-square-plus"></i>
                   Add
@@ -83,7 +83,7 @@ $result = mysqli_query($conn, $sql);
                       ?>
                     </td>
                     <td>
-                      <a href="/8ag1/customers_edit.php?user_id=<?php echo $row["user_id"] ?>">
+                      <a href="/customers_edit.php?user_id=<?php echo $row["user_id"] ?>">
                         <button type="button" class="btn btn-primary btn-sm">
                           <i class="fa-regular fa-pen-to-square"></i>
                           Edit
@@ -92,7 +92,7 @@ $result = mysqli_query($conn, $sql);
                       <?php
                       if ($row["user_active"] == true) {
                       ?>
-                        <a href="/8ag1/customers_deactivate.php?user_id=<?php echo $row["user_id"] ?>">
+                        <a href="/customers_deactivate.php?user_id=<?php echo $row["user_id"] ?>">
                           <button type="button" class="btn btn-danger btn-sm">
                             <i class="fa-solid fa-toggle-off"></i>
                             Deactivate
@@ -101,7 +101,7 @@ $result = mysqli_query($conn, $sql);
                       <?php
                       } else {
                       ?>
-                        <a href="/8ag1/customers_activate.php?user_id=<?php echo $row["user_id"] ?>">
+                        <a href="/customers_activate.php?user_id=<?php echo $row["user_id"] ?>">
                           <button type="button" class="btn btn-secondary btn-sm">
                             <i class="fa-solid fa-toggle-on"></i>
                             Activate

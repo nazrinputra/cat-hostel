@@ -72,19 +72,19 @@ if (isset($_POST['logout-button'])) {
       <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
         <div class="sb-sidenav-menu">
           <div class="nav">
-            <a class="nav-link" href="/8ag1/index.php">
+            <a class="nav-link" href="/index.php">
               <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
               Dashboard
             </a>
-            <a class="nav-link" href="/8ag1/bookings.php">
+            <a class="nav-link" href="/bookings.php">
               <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
               Bookings
             </a>
-            <a class="nav-link" href="/8ag1/rooms.php">
+            <a class="nav-link" href="/rooms.php">
               <div class="sb-nav-link-icon"><i class="fa-solid fa-shield-cat"></i></div>
               Rooms
             </a>
-            <a class="nav-link" href="/8ag1/cats.php">
+            <a class="nav-link" href="/cats.php">
               <div class="sb-nav-link-icon"><i class="fa-solid fa-cat"></i></div>
               Cats
             </a>
@@ -93,11 +93,11 @@ if (isset($_POST['logout-button'])) {
             ?>
               <div class="sb-sidenav-menu-heading">Administration</div>
 
-              <a class="nav-link" href="/8ag1/customers.php">
+              <a class="nav-link" href="/customers.php">
                 <div class="sb-nav-link-icon"><i class="fa-regular fa-address-book"></i></div>
                 Customers
               </a>
-              <a class="nav-link" href="/8ag1/staffs.php">
+              <a class="nav-link" href="/staffs.php">
                 <div class="sb-nav-link-icon"><i class="fa-solid fa-user-shield"></i></div>
                 Staffs
               </a>
