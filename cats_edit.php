@@ -48,7 +48,7 @@ if (isset($_POST['update-button'])) {
         <!-- Edit cat form -->
         <div class="card mb-4">
           <div class="card-header">
-            <i class="fas fa-table me-1"></i>
+            <i class="fa-solid fa-cat"></i>
             Edit Cat
           </div>
           <div class="card-body">
