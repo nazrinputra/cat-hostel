@@ -68,7 +68,7 @@ if (isset($_POST['update-button'])) {
                 <select class="form-select form-floating mb-3 py-3" name="gender" aria-label="Select gender" required>
                   <option disabled>Gender</option>
                   <option value="Male" <?php if ($row["user_gender"] == "Male") echo "selected"; ?>>Male</option>
-                  <option value="Female" <?php if ($row["user_gender"] == "Male") echo "selected"; ?>>Female</option>
+                  <option value="Female" <?php if ($row["user_gender"] == "Female") echo "selected"; ?>>Female</option>
                 </select>
               </div>
             </div>
