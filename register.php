@@ -1,4 +1,13 @@
 <?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
+
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+
 include 'layout/guest/header_guest.php';
 
 $error = '';
@@ -25,16 +34,37 @@ if (isset($_POST['register-button'])) {
     if (is_array($row)) {
         $error = "Email already exist!";
     } else {
-        $sql = "INSERT into `user` (user_name, user_password, user_email, user_contact, user_gender, user_role, user_active) VALUES ('{$user_name_register}', '{$user_password_register}', '{$user_email_register}', '{$user_contact_register}', '{$user_gender_register}', '{$user_role_register}', false)";
-        $sqlQuery = mysqli_query($conn, $sql);
+        $body = "Congratulations " . $user_name_register . "! You are successfully registered to the system.";
 
-        if (!$sqlQuery) {
-            die("Database connection not established. " . mysqli_error($conn));
+        $mail = new PHPMailer();
+        $mail->isSMTP();
+        $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+        $mail->Host = 'smtp.gmail.com';
+        $mail->Port = 587;
+        $mail->SMTPSecure = "tls";
+        $mail->SMTPAuth = true;
+        $mail->Username = 'your-email@gmail.com'; // Replace with your email
+        $mail->Password = 'abcdefghijkl'; // Replace with your app password
+        $mail->setFrom('cat-hostel@example.com', 'Cat Hostel');
+        $mail->addReplyTo('do-not-reply@example.com', 'Cat Hostel');
+        $mail->addAddress($user_email_register);
+        $mail->Subject = 'Cat Hostel Registration';
+        $mail->msgHTML($body);
+        $mail->AltBody = 'Congratulations! Welcome to Cat Hostel';
+
+        if (!$mail->Send()) {
+            echo '<script>alert("Error: ' . $mail->ErrorInfo . '");window.location.href="/8ag1/register.php";</script>';
+        } else {
+            $sql = "INSERT into `user` (user_name, user_password, user_email, user_contact, user_gender, user_role, user_active) VALUES ('{$user_name_register}', '{$user_password_register}', '{$user_email_register}', '{$user_contact_register}', '{$user_gender_register}', '{$user_role_register}', false)";
+            $sqlQuery = mysqli_query($conn, $sql);
+
+            if (!$sqlQuery) {
+                die("Database connection not established. " . mysqli_error($conn));
+            }
+
+            $error = '';
+            echo '<script>alert("Your account has been registered. Please proceed to login page.");window.location.href="/8ag1/index.php";</script>';
         }
-
-        $error = '';
-
-        echo '<script>alert("Your account has been registered. Please proceed to login page.");window.location.href="/8ag1/index.php";</script>';
     }
 }
 
