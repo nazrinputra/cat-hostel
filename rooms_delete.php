@@ -11,7 +11,7 @@ $sql = "DELETE FROM room WHERE room_id = '{$room_id}'";
 
 if (mysqli_query($conn, $sql)) {
   mysqli_close($conn);
-  echo '<script>alert("Your room info has been deleted.");window.location.href="rooms.php";</script>';
+  echo '<script>alert("The room info has been deleted.");window.location.href="rooms.php";</script>';
   // header('Location: rooms.php');
   exit;
 } else {
