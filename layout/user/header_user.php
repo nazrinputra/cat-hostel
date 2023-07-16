@@ -76,17 +76,17 @@ if (isset($_POST['logout-button'])) {
               <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
               Dashboard
             </a>
-            <a class="nav-link" href="/cats.php">
-              <div class="sb-nav-link-icon"><i class="fa-solid fa-cat"></i></div>
-              Cats
+            <a class="nav-link" href="/bookings.php">
+              <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+              Bookings
             </a>
             <a class="nav-link" href="/rooms.php">
               <div class="sb-nav-link-icon"><i class="fa-solid fa-shield-cat"></i></div>
               Rooms
             </a>
-            <a class="nav-link" href="/bookings.php">
-              <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-              Bookings
+            <a class="nav-link" href="/cats.php">
+              <div class="sb-nav-link-icon"><i class="fa-solid fa-cat"></i></div>
+              Cats
             </a>
             <?php
             if ($_SESSION["user_role"] == "Staff") {
