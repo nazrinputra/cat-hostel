@@ -3,14 +3,14 @@ include 'layout/guest/header_guest.php';
 
 $error = '';
 
-if (isset($_POST['username']) && isset($_POST['password'])) {
+if (isset($_POST['email']) && isset($_POST['password'])) {
     // clean data 
-    $username_login = stripslashes($_POST['username']);
+    $email_login = stripslashes($_POST['email']);
     $password_login = stripslashes($_POST['password']);
-    $username_login = mysqli_real_escape_string($conn, $username_login);
+    $email_login = mysqli_real_escape_string($conn, $email_login);
     $password_login = mysqli_real_escape_string($conn, $password_login);
 
-    $sql = "SELECT * FROM user WHERE user_name='{$username_login}' AND user_password='{$password_login}'";
+    $sql = "SELECT * FROM user WHERE user_email='{$email_login}' AND user_password='{$password_login}'";
     $result = mysqli_query($conn, $sql);
 
     $row  = mysqli_fetch_array($result);
@@ -59,8 +59,8 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                                 <div class="card-body">
                                     <form action="login.php" method="POST">
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" id="username" name="username" type="username" placeholder="Username" required />
-                                            <label for="username">Username</label>
+                                            <input class="form-control" id="email" name="email" type="email" placeholder="Email" required />
+                                            <label for="email">Email</label>
                                         </div>
                                         <div class="form-floating mb-3">
                                             <input class="form-control" id="password" name="password" type="password" placeholder="Password" required />
