@@ -80,7 +80,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
                                             echo $error;
                                             ?>
                                         </div>
-                                        <div class="small"><a href="register.php">Need an account? Sign up!</a></div>
+                                        <div class="small"><a href="/8ag1/register.php">Need an account? Sign up!</a></div>
                                     </div>
                                 </div>
                             </div>

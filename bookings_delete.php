@@ -11,7 +11,7 @@ $sql = "DELETE FROM booking WHERE booking_id = '{$booking_id}'";
 
 if (mysqli_query($conn, $sql)) {
   mysqli_close($conn);
-  echo '<script>alert("The booking info has been deleted.");window.location.href="/bookings.php";</script>';
+  echo '<script>alert("The booking info has been deleted.");window.location.href="/8ag1/bookings.php";</script>';
   // header('Location: bookings.php');
   exit;
 } else {

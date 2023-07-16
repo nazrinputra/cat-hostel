@@ -34,7 +34,7 @@ if (isset($_POST['register-button'])) {
 
         $error = '';
 
-        echo '<script>alert("Your account has been registered. Please proceed to login page.");window.location.href="index.php";</script>';
+        echo '<script>alert("Your account has been registered. Please proceed to login page.");window.location.href="/8ag1/index.php";</script>';
     }
 }
 
@@ -125,7 +125,7 @@ if (isset($_POST['register-button'])) {
                                             echo $error;
                                             ?>
                                         </div>
-                                        <div class="small"><a href="login.php">Has an account? Login here</a></div>
+                                        <div class="small"><a href="/8ag1/login.php">Has an account? Login here</a></div>
                                     </div>
                                 </div>
                             </div>

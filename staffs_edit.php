@@ -26,7 +26,7 @@ if (isset($_POST['update-button'])) {
   $result = mysqli_query($conn, $sql);
   $row  = mysqli_fetch_array($result);
   if (is_array($row)) {
-    echo '<script>alert("Email already exist!");window.location.href="staffs_edit.php?user_id=' . $user_id . '";</script>';
+    echo '<script>alert("Email already exist!");window.location.href="/8ag1/staffs_edit.php?user_id=' . $user_id . '";</script>';
   } else {
     $sql = "UPDATE `user` SET user_name='{$user_name}', user_email='{$user_email}', user_contact='{$user_contact}', user_gender='{$user_gender}' WHERE user_id='{$user_id}'";
     $sqlQuery = mysqli_query($conn, $sql);
@@ -34,7 +34,7 @@ if (isset($_POST['update-button'])) {
     if (!$sqlQuery) {
       die("Database connection not established. " . mysqli_error($conn));
     }
-    echo '<script>alert("Staff has been updated.");window.location.href="staffs.php";</script>';
+    echo '<script>alert("Staff has been updated.");window.location.href="/8ag1/staffs.php";</script>';
   }
 }
 ?>
@@ -44,7 +44,7 @@ if (isset($_POST['update-button'])) {
     <div class="container-fluid px-4">
       <h1 class="mt-4">Staffs</h1>
       <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="/staffs.php">Staffs</a></li>
+        <li class="breadcrumb-item"><a href="/8ag1/staffs.php">Staffs</a></li>
         <li class="breadcrumb-item active">Edit</li>
       </ol>
 
