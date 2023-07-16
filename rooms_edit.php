@@ -35,14 +35,14 @@ if (isset($_POST['update-button'])) {
       <h1 class="mt-4">Rooms</h1>
       <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item"><a href="/rooms.php">Rooms</a></li>
-        <li class="breadcrumb-item active">Add</li>
+        <li class="breadcrumb-item active">Edit</li>
       </ol>
 
-      <!-- Add room form -->
+      <!-- Edit room form -->
       <div class="card mb-4">
         <div class="card-header">
-          <i class="fas fa-table me-1"></i>
-          Add Room
+          <i class="fa-solid fa-shield-cat"></i>
+          Edit Room
         </div>
         <div class="card-body">
           <form action="rooms_edit.php" method="POST">

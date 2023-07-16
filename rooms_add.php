@@ -32,7 +32,7 @@ if (isset($_POST['save-button'])) {
       <!-- Add room form -->
       <div class="card mb-4">
         <div class="card-header">
-          <i class="fas fa-table me-1"></i>
+          <i class="fa-solid fa-shield-cat"></i>
           Add Room
         </div>
         <div class="card-body">
