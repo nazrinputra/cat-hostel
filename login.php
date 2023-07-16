@@ -59,11 +59,11 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                                 <div class="card-body">
                                     <form action="login.php" method="POST">
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" id="username" name="username" type="username" placeholder="Username" />
+                                            <input class="form-control" id="username" name="username" type="username" placeholder="Username" required />
                                             <label for="username">Username</label>
                                         </div>
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" id="password" name="password" type="password" placeholder="Password" />
+                                            <input class="form-control" id="password" name="password" type="password" placeholder="Password" required />
                                             <label for="password">Password</label>
                                         </div>
                                         <div class="d-flex align-items-center justify-content-between mt-4 mb-4 mx-2">

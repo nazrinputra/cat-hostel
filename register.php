@@ -70,13 +70,13 @@ if (isset($_POST['register-button'])) {
                                         <div class="row">
                                             <div class="col">
                                                 <div class="form-floating mb-3">
-                                                    <input class="form-control" id="username" name="username" type="text" placeholder="Username" />
+                                                    <input class="form-control" id="username" name="username" type="text" placeholder="Username" required />
                                                     <label for="username">Username</label>
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <div class="form-floating mb-3">
-                                                    <input class="form-control" id="password" name="password" type="password" placeholder="Password" />
+                                                    <input class="form-control" id="password" name="password" type="password" placeholder="Password" required />
                                                     <label for="password">Password</label>
                                                 </div>
                                             </div>
@@ -85,13 +85,13 @@ if (isset($_POST['register-button'])) {
                                         <div class="row">
                                             <div class="col">
                                                 <div class="form-floating mb-3">
-                                                    <input class="form-control" id="email" name="email" type="email" placeholder="Email" />
+                                                    <input class="form-control" id="email" name="email" type="email" placeholder="Email" required />
                                                     <label for="email">Email</label>
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <div class="form-floating mb-3">
-                                                    <input class="form-control" id="contact" name="contact" type="text" placeholder="Contact" />
+                                                    <input class="form-control" id="contact" name="contact" type="text" placeholder="Contact" required />
                                                     <label for="contact">Contact</label>
                                                 </div>
                                             </div>
@@ -99,15 +99,15 @@ if (isset($_POST['register-button'])) {
 
                                         <div class="row">
                                             <div class="col">
-                                                <select class="form-select form-floating mb-3 py-3" name="gender" aria-label="Select gender">
-                                                    <option selected>Gender</option>
+                                                <select class="form-select form-floating mb-3 py-3" name="gender" aria-label="Select gender" required>
+                                                    <option disabled>Gender</option>
                                                     <option value="Male">Male</option>
                                                     <option value="Female">Female</option>
                                                 </select>
                                             </div>
                                             <div class="col">
-                                                <select class="form-select form-floating mb-3 py-3" name="role" aria-label="Select role">
-                                                    <option selected>Role</option>
+                                                <select class="form-select form-floating mb-3 py-3" name="role" aria-label="Select role" required>
+                                                    <option disabled>Role</option>
                                                     <option value="Customer">Customer</option>
                                                     <option value="Staff">Staff</option>
                                                 </select>
