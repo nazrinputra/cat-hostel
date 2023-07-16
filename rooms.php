@@ -95,7 +95,7 @@ $result = mysqli_query($conn, $sql);
                       <?php
                       } else {
                       ?>
-                        <a href="/rooms_book.php?room_id=<?php echo $row["room_id"] ?>">
+                        <a href="/bookings_add.php?room_id=<?php echo $row["room_id"] ?>">
                           <button type="button" class="btn btn-primary btn-sm">
                             <i class="fa-regular fa-calendar-check"></i>
                             Book
