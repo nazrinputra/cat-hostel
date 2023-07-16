@@ -11,38 +11,50 @@ include 'layout/user/header_user.php';
       </ol>
       <div class="row">
         <div class="col-xl-3 col-md-6">
-          <div class="card bg-primary text-white mb-4">
-            <div class="card-body">Primary Card</div>
+          <div class="card mb-4">
+            <div class="card-header bg-primary text-white">Total number of rooms</div>
             <div class="card-footer d-flex align-items-center justify-content-between">
-              <a class="small text-white stretched-link" href="#">View Details</a>
-              <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+              <?php
+              $sql = "SELECT * FROM room";
+              $result = mysqli_query($conn, $sql);
+              echo mysqli_num_rows($result) . " room(s)";
+              ?>
             </div>
           </div>
         </div>
         <div class="col-xl-3 col-md-6">
-          <div class="card bg-warning text-white mb-4">
-            <div class="card-body">Warning Card</div>
+          <div class="card mb-4">
+            <div class="card-header bg-warning text-white">Total number of cats</div>
             <div class="card-footer d-flex align-items-center justify-content-between">
-              <a class="small text-white stretched-link" href="#">View Details</a>
-              <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+              <?php
+              $sql = "SELECT * FROM cat";
+              $result = mysqli_query($conn, $sql);
+              echo mysqli_num_rows($result) . " cat(s)";
+              ?>
             </div>
           </div>
         </div>
         <div class="col-xl-3 col-md-6">
-          <div class="card bg-success text-white mb-4">
-            <div class="card-body">Success Card</div>
+          <div class="card mb-4">
+            <div class="card-header bg-success text-white">Total number of bookings</div>
             <div class="card-footer d-flex align-items-center justify-content-between">
-              <a class="small text-white stretched-link" href="#">View Details</a>
-              <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+              <?php
+              $sql = "SELECT * FROM booking";
+              $result = mysqli_query($conn, $sql);
+              echo mysqli_num_rows($result) . " booking(s)";
+              ?>
             </div>
           </div>
         </div>
         <div class="col-xl-3 col-md-6">
-          <div class="card bg-danger text-white mb-4">
-            <div class="card-body">Danger Card</div>
+          <div class="card mb-4">
+            <div class="card-header bg-danger text-white">Total number of customers</div>
             <div class="card-footer d-flex align-items-center justify-content-between">
-              <a class="small text-white stretched-link" href="#">View Details</a>
-              <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+              <?php
+              $sql = "SELECT * FROM user WHERE user_role='Customer'";
+              $result = mysqli_query($conn, $sql);
+              echo mysqli_num_rows($result) . " customer(s)";
+              ?>
             </div>
           </div>
         </div>
