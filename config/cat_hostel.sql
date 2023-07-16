@@ -21,7 +21,7 @@ SET time_zone = "+00:00";
 -- Database: `cat_hostel`
 --
 DROP DATABASE IF EXISTS `cat_hostel`;
-CREATE DATABASE IF NOT EXISTS `cat_hostel` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+CREATE DATABASE IF NOT EXISTS `cat_hostel`;
 USE `cat_hostel`;
 -- --------------------------------------------------------
 --
@@ -36,7 +36,7 @@ CREATE TABLE `Booking` (
   `booking_reference` varchar(10) NOT NULL,
   `check_in` date NOT NULL,
   `check_out` date NOT NULL
-) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+) ENGINE = InnoDB;
 -- --------------------------------------------------------
 --
 -- Table structure for table `Cat`
@@ -50,7 +50,7 @@ CREATE TABLE `Cat` (
   `cat_gender` varchar(10) NOT NULL,
   `cat_color` varchar(15) NOT NULL,
   `cat_weight` int NOT NULL
-) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+) ENGINE = InnoDB;
 --
 -- Dumping data for table `Cat`
 --
@@ -74,8 +74,8 @@ DROP TABLE IF EXISTS `Room`;
 CREATE TABLE `Room` (
   `room_id` int NOT NULL,
   `room_name` varchar(50) NOT NULL,
-  `room_description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL
-) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+  `room_description` varchar(255) DEFAULT NULL
+) ENGINE = InnoDB;
 --
 -- Dumping data for table `Room`
 --
@@ -96,7 +96,7 @@ CREATE TABLE `User` (
   `user_email` varchar(50) NOT NULL,
   `user_password` varchar(50) NOT NULL,
   `user_role` varchar(10) NOT NULL
-) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+) ENGINE = InnoDB;
 --
 -- Dumping data for table `User`
 --
