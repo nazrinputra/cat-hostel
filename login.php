@@ -10,23 +10,28 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     $email_login = mysqli_real_escape_string($conn, $email_login);
     $password_login = mysqli_real_escape_string($conn, $password_login);
 
-    $sql = "SELECT * FROM user WHERE user_email='{$email_login}' AND user_password='{$password_login}'";
+    $sql = "SELECT * FROM user WHERE user_email='{$email_login}'";
     $result = mysqli_query($conn, $sql);
 
     $row  = mysqli_fetch_array($result);
 
     if (is_array($row)) {
-        if ($row['user_active']) {
-            $_SESSION["user_id"] = $row['user_id'];
-            $_SESSION["user_name"] = $row['user_name'];
-            $_SESSION["user_email"] = $row['user_email'];
-            $_SESSION["user_role"] = $row['user_role'];
-            header("Location: index.php");
+        $password_db = $row['user_password'];
+        if (password_verify($password_login, $password_db)) {
+            if ($row['user_active']) {
+                $_SESSION["user_id"] = $row['user_id'];
+                $_SESSION["user_name"] = $row['user_name'];
+                $_SESSION["user_email"] = $row['user_email'];
+                $_SESSION["user_role"] = $row['user_role'];
+                header("Location: /8ag1/index.php");
+            } else {
+                $error = "User account inactive!";
+            }
         } else {
-            $error = "User account inactive!";
+            $error = "Invalid username or password!";
         }
     } else {
-        $error = "Invalid username or password!";
+        $error = "Account does not exist!";
     }
 }
 ?>

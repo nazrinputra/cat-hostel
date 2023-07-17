@@ -28,13 +28,15 @@ if (isset($_POST['register-button'])) {
     $user_gender_register = mysqli_real_escape_string($conn, $user_gender_register);
     $user_role_register = mysqli_real_escape_string($conn, $user_role_register);
 
+    $user_password_hash = password_hash($user_password_register, PASSWORD_DEFAULT);
+
     $sql = "SELECT * FROM user WHERE user_email='{$user_email_register}'";
     $result = mysqli_query($conn, $sql);
     $row  = mysqli_fetch_array($result);
     if (is_array($row)) {
         $error = "Email already exist!";
     } else {
-        $body = "Congratulations " . $user_name_register . "! You are successfully registered to the system.";
+        $body = "Congratulations " . ucwords($user_name_register) . "! You are successfully registered to the system.";
 
         $mail = new PHPMailer();
         $mail->isSMTP();
@@ -43,8 +45,8 @@ if (isset($_POST['register-button'])) {
         $mail->Port = 587;
         $mail->SMTPSecure = "tls";
         $mail->SMTPAuth = true;
-        $mail->Username = 'your-email@gmail.com'; // Replace with your email
-        $mail->Password = 'abcdefghijkl'; // Replace with your app password
+        $mail->Username = 'putranaz94@gmail.com'; // Replace with your email
+        $mail->Password = 'meegsmqkoxhufhew'; // Replace with your app password
         $mail->setFrom('cat-hostel@example.com', 'Cat Hostel');
         $mail->addReplyTo('do-not-reply@example.com', 'Cat Hostel');
         $mail->addAddress($user_email_register);
@@ -55,7 +57,7 @@ if (isset($_POST['register-button'])) {
         if (!$mail->Send()) {
             echo '<script>alert("Error: ' . $mail->ErrorInfo . '");window.location.href="/8ag1/register.php";</script>';
         } else {
-            $sql = "INSERT into `user` (user_name, user_password, user_email, user_contact, user_gender, user_role, user_active) VALUES ('{$user_name_register}', '{$user_password_register}', '{$user_email_register}', '{$user_contact_register}', '{$user_gender_register}', '{$user_role_register}', false)";
+            $sql = "INSERT into `user` (user_name, user_password, user_email, user_contact, user_gender, user_role, user_active) VALUES ('{$user_name_register}', '{$user_password_hash}', '{$user_email_register}', '{$user_contact_register}', '{$user_gender_register}', '{$user_role_register}', false)";
             $sqlQuery = mysqli_query($conn, $sql);
 
             if (!$sqlQuery) {
