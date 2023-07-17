@@ -1,9 +1,9 @@
 <?php
 
 $server_name = "localhost";
-$username = "root";
-$password = "Passw0rd";
-$database = "cat_hostel";
+$username = "amzarine_8ag1";
+$password = "8ag1#vHy@2511.6";
+$database = "amzarine_8ag1";
 
 // Create connection
 $conn = new mysqli($server_name, $username, $password, $database);

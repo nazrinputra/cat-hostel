@@ -9,8 +9,7 @@ SET time_zone = "+00:00";
 ;
 /*!40101 SET NAMES utf8mb4 */
 ;
-CREATE DATABASE IF NOT EXISTS `cat_hostel`;
-USE `cat_hostel`;
+USE `amzarine_8ag1`;
 DROP TABLE IF EXISTS `booking`;
 CREATE TABLE `booking` (
   `booking_id` int NOT NULL,
