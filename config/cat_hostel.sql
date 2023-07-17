@@ -11,8 +11,8 @@ SET time_zone = "+00:00";
 ;
 CREATE DATABASE IF NOT EXISTS `cat_hostel`;
 USE `cat_hostel`;
-DROP TABLE IF EXISTS `Booking`;
-CREATE TABLE `Booking` (
+DROP TABLE IF EXISTS `booking`;
+CREATE TABLE `booking` (
   `booking_id` int NOT NULL,
   `room_id` int NOT NULL,
   `cat_id` int NOT NULL,
@@ -20,9 +20,9 @@ CREATE TABLE `Booking` (
   `check_in` date NOT NULL,
   `check_out` date NOT NULL
 ) ENGINE = InnoDB;
-TRUNCATE TABLE `Booking`;
-DROP TABLE IF EXISTS `Cat`;
-CREATE TABLE `Cat` (
+TRUNCATE TABLE `booking`;
+DROP TABLE IF EXISTS `cat`;
+CREATE TABLE `cat` (
   `cat_id` int NOT NULL,
   `user_id` int NOT NULL,
   `cat_name` varchar(50) NOT NULL,
@@ -30,27 +30,27 @@ CREATE TABLE `Cat` (
   `cat_color` varchar(15) NOT NULL,
   `cat_weight` int NOT NULL
 ) ENGINE = InnoDB;
-TRUNCATE TABLE `Cat`;
-DROP TABLE IF EXISTS `Room`;
-CREATE TABLE `Room` (
+TRUNCATE TABLE `cat`;
+DROP TABLE IF EXISTS `room`;
+CREATE TABLE `room` (
   `room_id` int NOT NULL,
   `room_name` varchar(50) NOT NULL,
   `room_description` varchar(255) DEFAULT NULL
 ) ENGINE = InnoDB;
-TRUNCATE TABLE `Room`;
-DROP TABLE IF EXISTS `User`;
-CREATE TABLE `User` (
+TRUNCATE TABLE `room`;
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
   `user_id` int NOT NULL,
   `user_name` varchar(100) NOT NULL,
   `user_gender` varchar(10) NOT NULL,
   `user_contact` varchar(15) NOT NULL,
   `user_email` varchar(50) NOT NULL,
-  `user_password` varchar(50) NOT NULL,
+  `user_password` varchar(100) NOT NULL,
   `user_role` varchar(10) NOT NULL,
   `user_active` tinyint(1) NOT NULL
 ) ENGINE = InnoDB;
-TRUNCATE TABLE `User`;
-INSERT INTO `User` (
+TRUNCATE TABLE `user`;
+INSERT INTO `user` (
     `user_id`,
     `user_name`,
     `user_gender`,
@@ -66,7 +66,7 @@ VALUES (
     'Male',
     '12345',
     'staff@email.com',
-    'password',
+    '$2y$10$OClEyak21GcxN.EAahQyBOexKPbhtGAXwfRGZWt33GwHizyOYYnx2',
     'Staff',
     1
   ),
@@ -75,36 +75,36 @@ VALUES (
     'customer',
     'Female',
     '12345',
-    'customer2@email.com',
-    'password',
+    'customer@email.com',
+    '$2y$10$ZGwKrqFPT1JHusq3CDVQiurM7rWlY0Vvi/gDt0QxZf/SMacZM9A32',
     'Customer',
     0
   );
-ALTER TABLE `Booking`
+ALTER TABLE `booking`
 ADD PRIMARY KEY (`booking_id`),
   ADD KEY `booking_cat` (`cat_id`),
   ADD KEY `booking_room` (`room_id`);
-ALTER TABLE `Cat`
+ALTER TABLE `cat`
 ADD PRIMARY KEY (`cat_id`),
   ADD KEY `cat_owner` (`user_id`);
-ALTER TABLE `Room`
+ALTER TABLE `room`
 ADD PRIMARY KEY (`room_id`);
-ALTER TABLE `User`
+ALTER TABLE `user`
 ADD PRIMARY KEY (`user_id`),
   ADD UNIQUE KEY `user_email` (`user_email`);
-ALTER TABLE `Booking`
+ALTER TABLE `booking`
 MODIFY `booking_id` int NOT NULL AUTO_INCREMENT;
-ALTER TABLE `Cat`
+ALTER TABLE `cat`
 MODIFY `cat_id` int NOT NULL AUTO_INCREMENT;
-ALTER TABLE `Room`
+ALTER TABLE `room`
 MODIFY `room_id` int NOT NULL AUTO_INCREMENT;
-ALTER TABLE `User`
+ALTER TABLE `user`
 MODIFY `user_id` int NOT NULL AUTO_INCREMENT;
-ALTER TABLE `Booking`
-ADD CONSTRAINT `booking_cat` FOREIGN KEY (`cat_id`) REFERENCES `Cat` (`cat_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `booking_room` FOREIGN KEY (`room_id`) REFERENCES `Room` (`room_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-ALTER TABLE `Cat`
-ADD CONSTRAINT `cat_owner` FOREIGN KEY (`user_id`) REFERENCES `User` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+ALTER TABLE `booking`
+ADD CONSTRAINT `booking_cat` FOREIGN KEY (`cat_id`) REFERENCES `cat` (`cat_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `booking_room` FOREIGN KEY (`room_id`) REFERENCES `room` (`room_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+ALTER TABLE `cat`
+ADD CONSTRAINT `cat_owner` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */
 ;
