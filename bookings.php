@@ -8,11 +8,13 @@ if ($_SESSION["user_role"] == "Staff") {
   $resultCat = mysqli_query($conn, $sqlCat);
   $rowCat  = mysqli_fetch_array($resultCat);
 
-  $sql = "SELECT * FROM booking WHERE cat_id IN (" . implode(',', array_map('intval', $rowCat)) . ")";
+  if ($rowCat) {
+    $sql = "SELECT * FROM booking WHERE cat_id IN (" . implode(',', array_map('intval', $rowCat)) . ")";
+    $result = mysqli_query($conn, $sql);
+  } else {
+    $result = null;
+  }
 }
-
-$result = mysqli_query($conn, $sql);
-
 ?>
 
 <div id="layoutSidenav_content">
@@ -24,7 +26,7 @@ $result = mysqli_query($conn, $sql);
       </ol>
 
       <?php
-      if (mysqli_num_rows($result) == 0) {
+      if (!$result || mysqli_num_rows($result) == 0) {
       ?>
         <!-- No room -->
         <div class="row justify-content-center">
@@ -33,7 +35,7 @@ $result = mysqli_query($conn, $sql);
               <img class="mb-4 img-error" src="assets/img/error-404-monochrome.svg" />
               <p class="lead">Looks like there is no bookings in the system.</p>
 
-              <a href="/8ag1/bookings_add.php">
+              <a href="/bookings_add.php">
                 <i class="fa-regular fa-calendar-check"></i>
                 Book a room
               </a>
@@ -49,7 +51,7 @@ $result = mysqli_query($conn, $sql);
             <div class="d-flex justify-content-between">
               <span><i class="fas fa-table me-1"></i>
                 Bookings Table</span>
-              <a href="/8ag1/bookings_add.php">
+              <a href="/bookings_add.php">
                 <button type="button" class="btn btn-primary btn-sm">
                   <i class="fa-regular fa-square-plus"></i>
                   Add
@@ -87,13 +89,13 @@ $result = mysqli_query($conn, $sql);
                     <td><?php echo $row["check_in"] ?></td>
                     <td><?php echo $row["check_out"] ?></td>
                     <td>
-                      <a href="/8ag1/bookings_edit.php?booking_id=<?php echo $row["booking_id"] ?>">
+                      <a href="/bookings_edit.php?booking_id=<?php echo $row["booking_id"] ?>">
                         <button type="button" class="btn btn-primary btn-sm">
                           <i class="fa-regular fa-pen-to-square"></i>
                           Edit
                         </button>
                       </a>
-                      <a href="/8ag1/bookings_delete.php?booking_id=<?php echo $row["booking_id"] ?>">
+                      <a href="/bookings_delete.php?booking_id=<?php echo $row["booking_id"] ?>">
                         <button type="button" class="btn btn-danger btn-sm">
                           <i class="fa-regular fa-trash-can"></i>
                           Delete

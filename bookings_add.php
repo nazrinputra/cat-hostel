@@ -38,7 +38,7 @@ if (isset($_POST['save-button'])) {
     die("Database connection not established. " . mysqli_error($conn));
   }
 
-  echo '<script>alert("Your booking info has been added.");window.location.href="/8ag1/bookings.php";</script>';
+  echo '<script>alert("Your booking info has been added.");window.location.href="/bookings.php";</script>';
 }
 ?>
 
@@ -47,7 +47,7 @@ if (isset($_POST['save-button'])) {
     <div class="container-fluid px-4">
       <h1 class="mt-4">Bookings</h1>
       <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="/8ag1/bookings.php">Bookings</a></li>
+        <li class="breadcrumb-item"><a href="/bookings.php">Bookings</a></li>
         <li class="breadcrumb-item active">Add</li>
       </ol>
 

@@ -16,6 +16,7 @@ if (isset($_POST['register-button'])) {
     // clean data 
     $user_name_register = stripslashes($_POST['username']);
     $user_email_register = stripslashes($_POST['email']);
+    $user_ic_register = stripslashes($_POST['ic']);
     $user_password_register = stripslashes($_POST['password']);
     $user_contact_register = stripslashes($_POST['contact']);
     $user_gender_register = stripslashes($_POST['gender']);
@@ -23,6 +24,7 @@ if (isset($_POST['register-button'])) {
 
     $user_name_register = mysqli_real_escape_string($conn, $user_name_register);
     $user_email_register = mysqli_real_escape_string($conn, $user_email_register);
+    $user_ic_register = mysqli_real_escape_string($conn, $user_ic_register);
     $user_password_register = mysqli_real_escape_string($conn, $user_password_register);
     $user_contact_register = mysqli_real_escape_string($conn, $user_contact_register);
     $user_gender_register = mysqli_real_escape_string($conn, $user_gender_register);
@@ -30,13 +32,13 @@ if (isset($_POST['register-button'])) {
 
     $user_password_hash = password_hash($user_password_register, PASSWORD_DEFAULT);
 
-    $sql = "SELECT * FROM user WHERE user_email='{$user_email_register}'";
+    $sql = "SELECT * FROM user WHERE user_ic='{$user_ic_register}'";
     $result = mysqli_query($conn, $sql);
     $row  = mysqli_fetch_array($result);
     if (is_array($row)) {
-        $error = "Email already exist!";
+        $error = "IC already exist!";
     } else {
-        $sql = "INSERT into `user` (user_name, user_password, user_email, user_contact, user_gender, user_role, user_active) VALUES ('{$user_name_register}', '{$user_password_hash}', '{$user_email_register}', '{$user_contact_register}', '{$user_gender_register}', '{$user_role_register}', false)";
+        $sql = "INSERT into `user` (user_name, user_password, user_email, user_ic, user_contact, user_gender, user_role, user_active) VALUES ('{$user_name_register}', '{$user_password_hash}', '{$user_email_register}', '{$user_ic_register}', '{$user_contact_register}', '{$user_gender_register}', '{$user_role_register}', false)";
         $sqlQuery = mysqli_query($conn, $sql);
 
         if (!$sqlQuery) {
@@ -44,7 +46,7 @@ if (isset($_POST['register-button'])) {
         }
 
         $error = '';
-        echo '<script>alert("Your account has been registered. Please proceed to login page.");window.location.href="/8ag1/index.php";</script>';
+        echo '<script>alert("Your account has been registered. Please proceed to login page.");window.location.href="/index.php";</script>';
         // $body = "Congratulations " . ucwords($user_name_register) . "! You are successfully registered to the system.";
 
         // $mail = new PHPMailer();
@@ -64,7 +66,7 @@ if (isset($_POST['register-button'])) {
         // $mail->AltBody = 'Congratulations! Welcome to Cat Hostel';
 
         // if (!$mail->Send()) {
-        //     echo '<script>alert("Error: ' . $mail->ErrorInfo . '");window.location.href="/8ag1/register.php";</script>';
+        //     echo '<script>alert("Error: ' . $mail->ErrorInfo . '");window.location.href="/register.php";</script>';
         // } else {
         //     $sql = "INSERT into `user` (user_name, user_password, user_email, user_contact, user_gender, user_role, user_active) VALUES ('{$user_name_register}', '{$user_password_hash}', '{$user_email_register}', '{$user_contact_register}', '{$user_gender_register}', '{$user_role_register}', false)";
         //     $sqlQuery = mysqli_query($conn, $sql);
@@ -74,7 +76,7 @@ if (isset($_POST['register-button'])) {
         //     }
 
         //     $error = '';
-        //     echo '<script>alert("Your account has been registered. Please proceed to login page.");window.location.href="/8ag1/index.php";</script>';
+        //     echo '<script>alert("Your account has been registered. Please proceed to login page.");window.location.href="/index.php";</script>';
         // }
     }
 }
@@ -132,8 +134,8 @@ if (isset($_POST['register-button'])) {
                                             </div>
                                             <div class="col">
                                                 <div class="form-floating mb-3">
-                                                    <input class="form-control" id="contact" name="contact" type="text" placeholder="Contact" required />
-                                                    <label for="contact">Contact</label>
+                                                    <input class="form-control" id="ic" name="ic" type="ic" placeholder="IC" maxlength="12" required />
+                                                    <label for="ic">IC</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -147,6 +149,15 @@ if (isset($_POST['register-button'])) {
                                                 </select>
                                             </div>
                                             <div class="col">
+                                                <div class="form-floating mb-3">
+                                                    <input class="form-control" id="contact" name="contact" type="text" placeholder="Contact" maxlength="15" required />
+                                                    <label for="contact">Contact</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col">
                                                 <select class="form-select form-floating mb-3 py-3" name="role" aria-label="Select role" required>
                                                     <option disabled>Role</option>
                                                     <option value="Customer">Customer</option>
@@ -154,7 +165,6 @@ if (isset($_POST['register-button'])) {
                                                 </select>
                                             </div>
                                         </div>
-
 
                                         <div class="d-flex align-items-center justify-content-center mt-4 mb-4 mx-2">
                                             <button class="btn btn-primary btn-lg" type="submit" name="register-button">Register</button>
@@ -166,7 +176,7 @@ if (isset($_POST['register-button'])) {
                                             echo $error;
                                             ?>
                                         </div>
-                                        <div class="small"><a href="/8ag1/login.php">Has an account? Login here</a></div>
+                                        <div class="small"><a href="/login.php">Has an account? Login here</a></div>
                                     </div>
                                 </div>
                             </div>

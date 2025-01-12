@@ -11,7 +11,7 @@ $sql = "UPDATE user SET user_active=false WHERE user_id = '{$user_id}'";
 
 if (mysqli_query($conn, $sql)) {
   mysqli_close($conn);
-  echo '<script>alert("The staff has been deactivated.");window.location.href="/8ag1/staffs.php";</script>';
+  echo '<script>alert("The staff has been deactivated.");window.location.href="/staffs.php";</script>';
   // header('Location: staffs.php');
   exit;
 } else {

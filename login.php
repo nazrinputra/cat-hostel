@@ -3,14 +3,14 @@ include 'layout/guest/header_guest.php';
 
 $error = '';
 
-if (isset($_POST['email']) && isset($_POST['password'])) {
+if (isset($_POST['ic']) && isset($_POST['password'])) {
     // clean data 
-    $email_login = stripslashes($_POST['email']);
+    $ic_login = stripslashes($_POST['ic']);
     $password_login = stripslashes($_POST['password']);
-    $email_login = mysqli_real_escape_string($conn, $email_login);
+    $ic_login = mysqli_real_escape_string($conn, $ic_login);
     $password_login = mysqli_real_escape_string($conn, $password_login);
 
-    $sql = "SELECT * FROM user WHERE user_email='{$email_login}'";
+    $sql = "SELECT * FROM user WHERE user_ic='{$ic_login}'";
     $result = mysqli_query($conn, $sql);
 
     $row  = mysqli_fetch_array($result);
@@ -22,8 +22,9 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
                 $_SESSION["user_id"] = $row['user_id'];
                 $_SESSION["user_name"] = $row['user_name'];
                 $_SESSION["user_email"] = $row['user_email'];
+                $_SESSION["user_ic"] = $row['user_ic'];
                 $_SESSION["user_role"] = $row['user_role'];
-                header("Location: /8ag1/index.php");
+                header("Location: /index.php");
             } else {
                 $error = "User account inactive!";
             }
@@ -64,8 +65,8 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
                                 <div class="card-body">
                                     <form action="login.php" method="POST">
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" id="email" name="email" type="email" placeholder="Email" required />
-                                            <label for="email">Email</label>
+                                            <input class="form-control" id="ic" name="ic" type="ic" placeholder="IC" maxlength="12" required />
+                                            <label for="ic">IC</label>
                                         </div>
                                         <div class="form-floating mb-3">
                                             <input class="form-control" id="password" name="password" type="password" placeholder="Password" required />
@@ -85,7 +86,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
                                             echo $error;
                                             ?>
                                         </div>
-                                        <div class="small"><a href="/8ag1/register.php">Need an account? Sign up!</a></div>
+                                        <div class="small"><a href="/register.php">Need an account? Sign up!</a></div>
                                     </div>
                                 </div>
                             </div>

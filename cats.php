@@ -27,7 +27,7 @@ $result = mysqli_query($conn, $sql);
             <div class="text-center mt-4">
               <img class="mb-4 img-error" src="assets/img/error-404-monochrome.svg" />
               <p class="lead">Looks like you have no cats registered.</p>
-              <a href="/8ag1/cats_add.php">
+              <a href="/cats_add.php">
                 <i class="fa-regular fa-square-plus"></i>
                 Add a cat
               </a>
@@ -43,7 +43,7 @@ $result = mysqli_query($conn, $sql);
             <div class="d-flex justify-content-between">
               <span><i class="fas fa-table me-1"></i>
                 Cats Table</span>
-              <a href="/8ag1/cats_add.php">
+              <a href="/cats_add.php">
                 <button type="button" class="btn btn-primary btn-sm">
                   <i class="fa-regular fa-square-plus"></i>
                   Add
@@ -80,13 +80,13 @@ $result = mysqli_query($conn, $sql);
                     <td><?php echo $row["cat_weight"] ?></td>
                     <td><?php echo ucwords($rowUser["user_name"]) ?></td>
                     <td>
-                      <a href="/8ag1/cats_edit.php?cat_id=<?php echo $row["cat_id"] ?>">
+                      <a href="/cats_edit.php?cat_id=<?php echo $row["cat_id"] ?>">
                         <button type="button" class="btn btn-primary btn-sm">
                           <i class="fa-regular fa-pen-to-square"></i>
                           Edit
                         </button>
                       </a>
-                      <a href="/8ag1/cats_delete.php?cat_id=<?php echo $row["cat_id"] ?>">
+                      <a href="/cats_delete.php?cat_id=<?php echo $row["cat_id"] ?>">
                         <button type="button" class="btn btn-danger btn-sm">
                           <i class="fa-regular fa-trash-can"></i>
                           Delete

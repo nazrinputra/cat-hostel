@@ -29,7 +29,7 @@ if (isset($_POST['update-button'])) {
     die("Database connection not established. " . mysqli_error($conn));
   }
 
-  echo '<script>alert("Your cat info has been updated.");window.location.href="/8ag1/cats.php";</script>';
+  echo '<script>alert("Your cat info has been updated.");window.location.href="/cats.php";</script>';
 }
 ?>
 
@@ -38,7 +38,7 @@ if (isset($_POST['update-button'])) {
     <div class="container-fluid px-4">
       <h1 class="mt-4">Cats</h1>
       <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="/8ag1/cats.php">Cats</a></li>
+        <li class="breadcrumb-item"><a href="/cats.php">Cats</a></li>
         <li class="breadcrumb-item active">Edit</li>
       </ol>
 
@@ -101,7 +101,7 @@ if (isset($_POST['update-button'])) {
             <div class="text-center mt-4">
               <img class="mb-4 img-error" src="assets/img/error-404-monochrome.svg" />
               <p class="lead">The cat associated with this id is not found.</p>
-              <a href="/8ag1/cats_add.php">
+              <a href="/cats_add.php">
                 <i class="fa-regular fa-square-plus"></i>
                 Add a cat
               </a>

@@ -25,7 +25,7 @@ if (isset($_POST['update-button'])) {
     die("Database connection not established. " . mysqli_error($conn));
   }
 
-  echo '<script>alert("Your room info has been updated.");window.location.href="/8ag1/rooms.php";</script>';
+  echo '<script>alert("Your room info has been updated.");window.location.href="/rooms.php";</script>';
 }
 ?>
 
@@ -34,7 +34,7 @@ if (isset($_POST['update-button'])) {
     <div class="container-fluid px-4">
       <h1 class="mt-4">Rooms</h1>
       <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="/8ag1/rooms.php">Rooms</a></li>
+        <li class="breadcrumb-item"><a href="/rooms.php">Rooms</a></li>
         <li class="breadcrumb-item active">Edit</li>
       </ol>
 
