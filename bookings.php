@@ -3,6 +3,7 @@ include 'layout/user/header_user.php';
 
 if ($_SESSION["user_role"] == "Staff") {
   $sql = "SELECT * FROM booking";
+  $result = mysqli_query($conn, $sql);
 } else {
   $sqlCat = "SELECT cat_id FROM cat WHERE user_id='{$_SESSION["user_id"]}'";
   $resultCat = mysqli_query($conn, $sqlCat);
